@@ -710,7 +710,7 @@
 			"rawModeData": null,
 			"descriptionFormat": "html",
 			"description": "Update dynamic wrapper url for global, pages and saved links. If savedLinkID, or pageID are not passed, the global dynamic wrapper url will be updated.",
-			"headers": "",
+			"headers": "Content-Type: application/x-www-form-urlencoded\naccesskey: YOUR_API_ KEY_ HERE\noutputtype: json\napiversion: null\n",
 			"method": "POST",
 			"pathVariables": {},
 			"url": "https://api.idxbroker.com/clients/dynamicwrapperurl",
