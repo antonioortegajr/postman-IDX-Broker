@@ -7,3 +7,8 @@ The collection is all API endpoints for version 1.2.2
 A valid IDX Broker API key is required.
 
 This collection was created in Postman Version 3.2.10
+
+
+Do use downlad this collection and import to your postman install.
+
+https://www.getpostman.com/
