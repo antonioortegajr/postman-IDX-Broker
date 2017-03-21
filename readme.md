@@ -1,14 +1,14 @@
-READ ME
+# README
 
-This is collection for use with Postman and the IDX Broker API.
+This repo contains collections for use with Postman and the IDX Broker API.
 
-The collection is all API endpoints for version 1.2.2
+The collection vary in size and tests.
 
 A valid IDX Broker API key is required.
 
-This collection was created in Postman Version 3.2.10
 
+Download a collection and import to your postman install.
 
-Do use downlad this collection and import to your postman install.
+If you don't have postman you might want to get it.
 
 https://www.getpostman.com/
