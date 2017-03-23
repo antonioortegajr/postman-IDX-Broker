@@ -7,7 +7,7 @@ The collection vary in size and tests.
 A valid IDX Broker API key is required.
 
 
-Download a collection and import to your postman install.
+Download a collection or environment and import to your postman install.
 
 If you don't have postman you might want to get it.
 
