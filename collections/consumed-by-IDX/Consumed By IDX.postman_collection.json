@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Consumed By IDX",
-		"_postman_id": "44164bf5-0e42-7926-cfda-059b9108584c",
+		"_postman_id": "cae435d7-9b2e-a6d3-00b9-acf89db43458",
 		"description": "These endpoints are currently consumend by IDX Broker.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -30,9 +30,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -95,9 +94,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -160,9 +158,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -225,9 +222,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -290,9 +286,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -355,10 +350,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
 							"tests[\"Retun Length\"] = bodyLength;",
-							""
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -421,9 +414,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -486,9 +478,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -551,9 +542,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -616,9 +606,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -681,9 +670,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -741,9 +729,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -806,9 +793,8 @@
 							"    }",
 							"}",
 							"",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -862,7 +848,8 @@
 							"    var bodyLength = true;",
 							"    }",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
@@ -931,8 +918,8 @@
 							"}",
 							"",
 							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;"
+							"tests[\"Retun Length\"] = bodyLength;",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
 						]
 					}
 				}
