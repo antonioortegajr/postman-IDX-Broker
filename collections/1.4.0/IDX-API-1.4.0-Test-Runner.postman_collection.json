@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "IDX API 1.4.0 Test Runner",
-		"_postman_id": "1154bd2f-f54e-76be-3284-2079d2e6233a",
+		"_postman_id": "266b3020-00fb-207a-b5f5-a52206111371",
 		"description": "IDX Broker API calls in version 1.4.0\n\nRequired:\n* Environment variable url\n* Environment variable for request headers\n* Environment variable partner key\n* Client account with at least one featured listing\n\nTests are in this order as variables such as listing ID and approved MLS are passed to subsequent API calls.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -2842,6 +2842,137 @@
 					"response": []
 				},
 				{
+					"name": "properties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/clients/properties{{savedLinkId}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}",
+								"description": ""
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}",
+								"description": ""
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}",
+								"description": ""
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "linkName",
+									"value": "Test_side_of_test",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "pageTitle",
+									"value": "Test_side_of_test",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "linkTitle",
+									"value": "Test_side_of_test",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "queryString[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "queryString[hp]",
+									"value": "123456",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Get client saved links results"
+					},
+					"response": []
+				},
+				{
 					"name": "savedlinks",
 					"event": [
 						{
@@ -3389,7 +3520,7 @@
 									"        // test for valid json",
 									"        tests[\"Valid JSON\"] = isJson;",
 									"        ",
-									"        //set new spplemetal property ID",
+									"        //set new supplemetal property ID",
 									"        postman.setGlobalVariable(\"suppId\", isJson['newID']);",
 									"    }",
 									"    // test body length when code is 204. Must be 0",
