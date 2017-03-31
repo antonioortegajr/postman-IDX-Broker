@@ -16,7 +16,10 @@ Tests are in this order as variables such as listing ID and approved MLS are pas
 
 Only JSON supported.
 
+If you already have postman use the button below to import that collection.
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3b30ba1851da4447b17e)
 
+Or download this repo and import the collection from local.
 
 Pulls welcome!
