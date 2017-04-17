@@ -2,8 +2,8 @@
 	"variables": [],
 	"info": {
 		"name": "Consumed By IDX",
-		"_postman_id": "cae435d7-9b2e-a6d3-00b9-acf89db43458",
-		"description": "These endpoints are currently consumend by IDX Broker.",
+		"_postman_id": "41653c44-d29c-2baa-94e1-a11cd9f214ec",
+		"description": "These endpoints are currently consumend by IDX Broker.\n\nThe enpoints are in the IDX Broker WP plugin as well as the facebook app.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -15,23 +15,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -66,7 +94,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get account type."
 			},
 			"response": []
@@ -79,23 +110,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -130,7 +189,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get IDX id of approvd MLSs for the account."
 			},
 			"response": []
@@ -143,23 +205,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -194,7 +284,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information on city lists."
 			},
 			"response": []
@@ -207,23 +300,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -258,7 +379,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get names for city lists."
 			},
 			"response": []
@@ -271,23 +395,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -322,7 +474,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information on featured properties."
 			},
 			"response": []
@@ -335,29 +490,57 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "https://api.idxbroker.com/leads/lead",
+				"url": "{{url}}/leads/lead",
 				"method": "GET",
 				"header": [
 					{
@@ -386,7 +569,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information for one or multiple leads.\n\nExample Request: https://api.idxbroker.com/leads/lead?interval=24&startDatetime=2016-01-01+23:59:59&dateType=subscribeDate\n\nFor Data on a specific lead add/LEAD_ID_HERE\n\nExample: https://api.idxbroker.com/leads/lead/123"
 			},
 			"response": []
@@ -399,23 +585,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -450,7 +664,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information on available postal codes lists."
 			},
 			"response": []
@@ -463,23 +680,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -514,7 +759,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information on postal codes list names."
 			},
 			"response": []
@@ -527,23 +775,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -578,7 +854,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information counties lists."
 			},
 			"response": []
@@ -591,23 +870,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -642,7 +949,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information on counties lists names."
 			},
 			"response": []
@@ -655,23 +965,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -701,7 +1039,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get information for saved links."
 			},
 			"response": []
@@ -714,23 +1055,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -765,7 +1134,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get system links for the account."
 			},
 			"response": []
@@ -778,23 +1150,51 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
+							"/** Check status code is under 300 if so run tests",
+							"* The following are standard tests to be preformed on all endpoints.",
+							"* Some tests will only run if status is below 300",
+							"*/",
+							"if (responseCode.code < 300) {",
+							"    // rerport the status code is in the 200s",
+							"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+							"",
+							"    // get response body length for test",
 							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
+							"",
+							"    // tests when code is 200 and body lenth greater than 0",
+							"    if (responseCode.code === 200 && legnth > 0) {",
+							"        // set variable of body legnth and assume true",
 							"        var bodyLength = true;",
 							"",
+							"        // parse json response",
 							"        var isJson = JSON.parse(responseBody);",
+							"",
+							"        // test for valid json",
 							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
+							"",
 							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
+							"    // test body length when code is 204. Must be 0",
+							"    if (responseCode.code === 204 && legnth === 0) {",
+							"        //if body legnth is 0 then set variable to true",
+							"        var bodyLength = true;",
 							"    }",
 							"}",
 							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
+							"// run test for body legnth",
+							"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+							"",
+							"// test for a php warning",
+							"if (!responseBody.has(\"PHP WARNING\")) {",
+							"    var phpWarn = true;",
+							"}",
+							"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+							"",
+							"//run test that response was under 30 seconds",
+							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+							"",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							""
 						]
 					}
 				}
@@ -829,7 +1229,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get widget source urls."
 			},
 			"response": []
@@ -891,71 +1294,6 @@
 					]
 				},
 				"description": "Set wrapper URL. This is the global url."
-			},
-			"response": []
-		},
-		{
-			"name": "wrappercache",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"//Check status code is under 300 and check string length",
-							"if(responseCode.code < 300){",
-							"    var legnth = responseBody.length;",
-							"    if (responseCode.code === 200 && legnth > 0){",
-							"        var bodyLength = true;",
-							"",
-							"        var isJson = JSON.parse(responseBody);",
-							"        tests[\"Valid JSON\"] = isJson;",
-							"        ",
-							"    }",
-							"    if (responseCode.code === 204 && legnth === 0){",
-							"    var bodyLength = true;",
-							"    }",
-							"}",
-							"",
-							"",
-							"tests[\"Retun Length\"] = bodyLength;",
-							"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "{{url}}/clients/wrappercache",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					},
-					{
-						"key": "accesskey",
-						"value": "{{accesskey}}",
-						"description": ""
-					},
-					{
-						"key": "ancillarykey",
-						"value": "{{ancillarykey}}",
-						"description": ""
-					},
-					{
-						"key": "outputtype",
-						"value": "{{outputtype}}",
-						"description": ""
-					},
-					{
-						"key": "apiversion",
-						"value": "{{apiversion}}",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": "Delete wrapper cache."
 			},
 			"response": []
 		}
