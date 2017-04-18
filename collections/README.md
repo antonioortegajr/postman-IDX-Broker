@@ -2,12 +2,17 @@
 
 These collections are for endpoints consumed by IDX Broker or for specific versions of the API.
 
-## Import
+## Importing
 
-Use the run in Postman button to import a collection. You can also import from the github link using the Raw option.
+Use the Run in Postman button to import a collection.
+You can also import from the raw github link.
 The text from the raw link can also be copied and pasted into postman.
 Or download the repo and import.
 
-# Tests
+## Testing
 
-There is a sample of tests in this repo. Pulls for further tests welcome.
+There is a sample of tests in this repo. 
+
+Tests are written in javascript and can set variables for 
+
+Pulls for further tests welcome.
