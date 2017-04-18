@@ -2,6 +2,8 @@
 
 These collections are for endpoints consumed by IDX Broker or for specific versions of the API.
 
+Docs https://www.getpostman.com/docs/collections
+
 ## Importing
 
 Use the Run in Postman button to import a collection.
