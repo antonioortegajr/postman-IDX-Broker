@@ -1,6 +1,9 @@
 /** Check status code is under 300 if so run tests
 * The following are standard tests to be preformed on all endpoints.
 * Some tests will only run if status is below 300
+* These tests apply to all the api endpoints. thus can be stored in a global variable in the first call of a collection
+* Then run in eval() for the rest of the collection. See blog post below for example
+* http://blog.getpostman.com/2017/07/28/api-testing-tips-from-a-postman-professional/
 */
 if (responseCode.code < 300) {
     // rerport the status code is in the 200s
