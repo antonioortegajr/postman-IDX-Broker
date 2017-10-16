@@ -1,8 +1,8 @@
-# README
+# IDX Broker API and Postman
 
 This repo contains collections for use with Postman and the IDX Broker API.
 
-The collections vary in size and tests. Collections are created for specific versions of the API.
+The collections vary in size and tests. Collections are created for specific versions of this API.
 
 ## Requirements
 
@@ -13,7 +13,7 @@ To pass all tests:
 * A valid IDX Broker Partner API key is required.
 * An account with a featured listing is required
 
-Search Query will likely fail as this is turned off for all MLSs.
+Note: Search Query endpoint will likely fail as this is turned off for all MLSs.
 
 ## Install
 
@@ -23,11 +23,11 @@ Download an environment and import to your postman.
 
 If you don't have postman you might want to get it because it's awesome.
 
-https://www.getpostman.com/
+[Postman](https://www.getpostman.com/)
 
 
 ## Testing
 
-There is a sample of tests in this repo. Adding more specific tests is done in JS.
+There is a sample of tests in this repo. You can write your own tests based on my samples and or with the aid of the postman docs.
 
-https://www.getpostman.com/docs/writing_tests
+[Postman docs](https://www.getpostman.com/docs/writing_tests)
