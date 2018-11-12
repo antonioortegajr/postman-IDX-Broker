@@ -13,7 +13,7 @@ To pass all tests:
 * A valid IDX Broker Partner API key is required.
 * An account with a featured listing is required
 
-Note: Search Query endpoint will likely fail as this is turned off for all MLSs.
+Note: Some endpoints may fail if they are prohibited from use for an MLS. Your response coude should indicate the request was not allowed.
 
 ## Install
 
