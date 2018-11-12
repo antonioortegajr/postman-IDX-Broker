@@ -2492,24 +2492,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "likeIdxID",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "likeMlsPtID",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "images[hp]",
-									"value": "http://examplePost.com/postimage.jpg",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/systemlinks",
@@ -2910,24 +2894,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "likeIdxID",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "likeMlsPtID",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "images[hp]",
-									"value": "http://examplePost.com/postimage.jpg",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/widgetsrc",
@@ -3614,24 +3582,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "likeIdxID",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "likeMlsPtID",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "images[hp]",
-									"value": "http://examplePost.com/postimage.jpg",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/zipcodes",
@@ -4029,39 +3981,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "linkName",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "pageTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "linkTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "queryString[idxID]",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "queryString[hp]",
-									"value": "123456",
-									"type": "text"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/soldpending",
@@ -4448,24 +4369,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "likeIdxID",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "likeMlsPtID",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "images[hp]",
-									"value": "http://examplePost.com/postimage.jpg",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/supplemental",
@@ -5031,39 +4936,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "linkName",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "pageTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "linkTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "queryString[idxID]",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "queryString[hp]",
-									"value": "123456",
-									"type": "text"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/savedlinks",
@@ -5161,39 +5035,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "linkName",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "pageTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "linkTitle",
-									"value": "Test_side_of_test",
-									"type": "text"
-								},
-								{
-									"key": "queryString[idxID]",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "queryString[hp]",
-									"value": "123456",
-									"type": "text"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/clients/savedlinks/{{savedLinkId}}/count",
@@ -6167,14 +6010,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "note",
-									"value": "Test Note",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/leads/note/{{noteId}}",
@@ -6604,24 +6441,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "propertyName",
-									"value": "Test POST Property",
-									"type": "text"
-								},
-								{
-									"key": "property[idxID]",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "property[listingID]",
-									"value": "{{featuredId}}",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/leads/property/{{leadId}}",
@@ -7054,24 +6875,8 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "searchName",
-									"value": "Post test search",
-									"type": "text"
-								},
-								{
-									"key": "search[idxID]",
-									"value": "{{approvedMLS}}",
-									"type": "text"
-								},
-								{
-									"key": "search[hp]",
-									"value": "654321",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/leads/search/{{leadId}}",
