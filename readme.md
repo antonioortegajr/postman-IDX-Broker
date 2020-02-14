@@ -1,5 +1,7 @@
 # IDX Broker API and Postman
 
+Continuation of this collection is at https://github.com/idxbroker/postman-IDX-Broker
+
 This repo contains collections for use with Postman and the IDX Broker API.
 
 The collections vary in size and tests. Collections are created for specific versions of this API.
